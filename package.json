@@ -15,5 +15,9 @@
   "bugs": {
     "url": "https://github.com/twikista/Restaurant-Page/issues"
   },
-  "homepage": "https://github.com/twikista/Restaurant-Page#readme"
+  "homepage": "https://github.com/twikista/Restaurant-Page#readme",
+  "devDependencies": {
+    "webpack": "^5.65.0",
+    "webpack-cli": "^4.9.1"
+  }
 }
