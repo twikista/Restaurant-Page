@@ -1,19 +1,21 @@
-import rice from "./images/Avatarmker2.png";
+import rice from "./images/AvatarMaker2.png";
 function createMenuSection() {
   const menuSection = document.createElement("section");
+  menuSection.classList.add("menu-section");
   menuSection.append(
     createFoodMenu("Rice and Stew", rice, "1,200NGN"),
     createFoodMenu("Egusi Soup and Eba", rice, "1,400NGN"),
     createFoodMenu("Jollof Rice and Chicken", rice, "2,000NGN"),
     createFoodMenu("Bean ckae and Pap", rice, "1,000NGN")
   );
+  return menuSection;
 }
 
 function createFoodMenu(description, imageUrl, price) {
   const fragment = new DocumentFragment();
   const foodMenu = document.createElement("div");
   foodMenu.classList.add("food-menu");
-  const foodImg = new Image();
+  const menuImg = new Image();
   menuImg.classList.add("food-image");
   menuImg.src = imageUrl;
   const MenuDetails = document.createElement("div");
@@ -24,13 +26,8 @@ function createFoodMenu(description, imageUrl, price) {
   foodPrice.textContent = price;
   MenuDetails.append(menuTitile, foodPrice);
   fragment.append(menuImg, MenuDetails);
-  foodMenu.append(foodMenu);
+  foodMenu.append(fragment);
   return foodMenu;
 }
 
-function launchMenu() {
-  const main = document.querySelector("main");
-  main.append(createMenuSection());
-}
-
-export default launchMenu;
+export default createMenuSection;

@@ -1,7 +1,8 @@
 function createContactSection() {
   const contactSection = document.createElement("section");
   contactSection.classList.add("contact-section");
-  contactSection.append(contactDiv, getInTouchDiv);
+  contactSection.append(contactDetails(), getInTouch());
+  return contactSection;
 }
 
 function contactDetails() {
@@ -46,7 +47,7 @@ function getInTouch() {
   const form = document.createElement("form");
   form.classList.add("contact-form");
   form.append(
-    labelElement("name"),
+    labelElement("Full Name"),
     inputElement("text", "name"),
     labelElement("email"),
     inputElement("email", "email"),
@@ -54,8 +55,9 @@ function getInTouch() {
   );
   const textArea = document.createElement("textarea");
   textArea.id = "message";
-  textArea.maxLength = 100;
-  textArea.cols = 25;
+  textArea.maxLength = 200;
+  textArea.cols = 40;
+  textArea.rows = 10;
   form.append(textArea);
   fragment.append(form);
   getInTouchDiv.append(fragment);
@@ -64,7 +66,9 @@ function getInTouch() {
 
 function labelElement(name) {
   const nameLabel = document.createElement("label");
+  nameLabel.textContent = name;
   nameLabel.htmlFor = `${name}`;
+  return nameLabel;
 }
 
 function inputElement(inputType, name) {
@@ -72,11 +76,7 @@ function inputElement(inputType, name) {
   nameInput.type = `${inputType}`;
   nameInput.id = `${name}`;
   nameInput.classList.add(`${name}`);
+  return nameInput;
 }
 
-function launchContact() {
-  const main = document.querySelector("main");
-  main.append(createContactSection());
-}
-
-export default launchContact;
+export default createContactSection;

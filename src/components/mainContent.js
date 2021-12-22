@@ -1,3 +1,8 @@
-const h2 = document.createElement("h2");
-h2.textContent = "i am component";
-export default h2;
+import header from "./header";
+import main from "./main";
+function initializePage() {
+  const content = document.createElement("div");
+  content.append(header(), main());
+  return content;
+}
+export default initializePage;

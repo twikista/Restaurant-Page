@@ -18,7 +18,7 @@ function createNavbar() {
     const li = document.createElement("li");
     li.classList.add("list-item");
     const button = document.createElement("button");
-    button.classList.add("nav-btn");
+    button.classList.add("nav-btn", `${item}-btn`);
     button.textContent = item;
     li.append(button);
     fragment.append(li);
@@ -30,12 +30,26 @@ function createNavbar() {
   toggleBtn.textContent = "menu";
   //append components to nav bar
   navBar.append(logo, navMenu, toggleBtn);
+
+  navMenu.addEventListener("click", (e) => {
+    const target = e.target;
+    if (target.tagName !== "BUTTON" || target.classList.contains("active")) {
+      return;
+    }
+    activeTab(target);
+  });
   return navBar;
 }
 
-function launchHeader() {
-  const main = document.querySelector("main");
-  main.append(createHeader());
+function activeTab(target) {
+  const buttons = document.querySelectorAll(".nav-btn");
+  buttons.forEach((button) => {
+    if (button === target) {
+      button.classList.add("active");
+    } else {
+      button.classList.remove("active");
+    }
+  });
 }
 
-export default launchHeader;
+export default createHeader;

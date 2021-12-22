@@ -24,9 +24,4 @@ function homeSection() {
   return sectionWrapper;
 }
 
-function launchHome() {
-  const main = document.querySelector("main");
-  main.append(homeSection());
-}
-
-export default launchHome;
+export default homeSection;
