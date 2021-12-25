@@ -1,12 +1,13 @@
-function homeSection() {
+function createHome() {
   //create element
-  const sectionWrapper = document.createElement("section");
+  const homeSection = document.createElement("section");
+  homeSection.classList.add("home-section");
   const sectionContent = document.createElement("div");
   sectionContent.classList.add("section-content");
   //create main section header
-  const h2 = document.createElement("h2");
-  h2.textContent = "tasty meals for every moment";
-  h2.classList.add("section-heading");
+  const heroText = document.createElement("h1");
+  heroText.textContent = "tasty meals for every moment";
+  heroText.classList.add("section-heading");
   //create main section text
   const paragraph = document.createElement("p");
   paragraph.textContent =
@@ -17,11 +18,11 @@ function homeSection() {
   link.href = "#menu-section";
   link.textContent = "explore our menu";
   //append elements
-  sectionContent.append(h2, paragraph, link);
+  sectionContent.append(heroText, paragraph, link);
   const fragment = new DocumentFragment();
   fragment.append(sectionContent);
-  sectionWrapper.append(fragment);
-  return sectionWrapper;
+  homeSection.append(fragment);
+  return homeSection;
 }
 
-export default homeSection;
+export default createHome;

@@ -19,6 +19,7 @@ function createNavbar() {
     li.classList.add("list-item");
     const button = document.createElement("button");
     button.classList.add("nav-btn", `${item}-btn`);
+    button.setAttribute("data-section", `${item}-section`);
     button.textContent = item;
     li.append(button);
     fragment.append(li);
@@ -30,26 +31,60 @@ function createNavbar() {
   toggleBtn.textContent = "menu";
   //append components to nav bar
   navBar.append(logo, navMenu, toggleBtn);
-
-  navMenu.addEventListener("click", (e) => {
-    const target = e.target;
-    if (target.tagName !== "BUTTON" || target.classList.contains("active")) {
-      return;
-    }
-    activeTab(target);
-  });
   return navBar;
 }
 
-function activeTab(target) {
-  const buttons = document.querySelectorAll(".nav-btn");
-  buttons.forEach((button) => {
-    if (button === target) {
-      button.classList.add("active");
-    } else {
-      button.classList.remove("active");
-    }
-  });
-}
+// function appendToMain(target) {
+//   const main = document.querySelector(".main");
+//   if (
+//     target.classList.contains("home-btn") &&
+//     target.classList.contains("active")
+//   ) {
+//     main.append(launchHome());
+//   } else if (
+//     target.classList.contains("home-btn") &&
+//     target.classList.contains("active")
+//   ) {
+//     main.append(launchMenu());
+//   }
+// }
 
+// class Observable {
+//   constructor() {
+//     this.observers = [];
+//   }
+
+//   subscribe(f) {
+//     this.observers.push(f);
+//   }
+//   unsbscribe(f) {
+//     this.observer = this.observers.filter((subscriber) => subscriber !== f);
+//   }
+//   notify(data) {
+//     this.observers.forEach((observer) => observer(data));
+//   }
+// }
+
+// const observe = new Observable();
+// observe.subscribe(appendToMain);
+
+// document.body.addEventListener("click", (e) => {
+//   const target = e.target;
+
+//   console.log(target);
+//   if (target.tagName !== "BUTTON") {
+//     return;
+//   }
+//   const buttons = document.querySelectorAll(".nav-btn");
+//   console.log(buttons[0]);
+//   buttons.forEach((button) => {
+//     if (button === target) {
+//       button.classList.add("active");
+//     } else {
+//       button.classList.remove("active");
+//     }
+//   });
+//   // appendToMain(target);
+//   observe.notify(target);
+// });
 export default createHeader;
