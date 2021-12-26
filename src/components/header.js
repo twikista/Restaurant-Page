@@ -8,6 +8,7 @@ function createNavbar() {
   const navBar = document.createElement("nav");
   navBar.classList.add("nav-bar");
   const logo = document.createElement("h2");
+  logo.classList.add("logo");
   logo.textContent = "Havilah.";
   //menu buttons
   const navMenu = document.createElement("ul");

@@ -15,8 +15,9 @@ function createHome() {
   paragraph.classList.add("section-text");
   //create link to menu section
   const link = document.createElement("a");
+  link.classList.add("view-menu-btn");
   link.href = "#menu-section";
-  link.textContent = "explore our menu";
+  link.textContent = "View Menu";
   //append elements
   sectionContent.append(heroText, paragraph, link);
   const fragment = new DocumentFragment();

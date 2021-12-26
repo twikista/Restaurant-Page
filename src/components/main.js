@@ -37,11 +37,19 @@ function appendToMain(target) {
   }
   if (target.classList.contains("home-btn")) {
     main.append(launchHome());
-  } else if (target.classList.contains("menu-btn")) {
+  } else if (
+    target.classList.contains("menu-btn") ||
+    target.classList.contains("view-menu-btn")
+  ) {
     main.append(launchMenu());
   } else if (target.classList.contains("contact-btn")) {
     main.append(launchContact());
   }
+}
+
+function menuToggler() {
+  const navMenu = document.querySelector(".nav-menu");
+  navMenu.classList.toggle("active");
 }
 
 /*class Observable {
@@ -66,9 +74,16 @@ observe.subscribe(appendToMain);
 
 document.body.addEventListener("click", (e) => {
   const target = e.target;
-  console.log(target);
-  if (!target.classList.contains("nav-btn")) {
-    return;
+  // console.log(target);
+  // if (target.tagName != "BUTTON") {
+  //   return;
+  // }
+  if (
+    target.classList.contains("nav-btn") ||
+    target.classList.contains("view-menu-btn")
+  ) {
+    appendToMain(target);
+    menuToggler();
   }
   // const buttons = document.querySelectorAll(".nav-btn");
   // buttons.forEach((button) => {
@@ -77,8 +92,11 @@ document.body.addEventListener("click", (e) => {
   //   }
   //   button.classList.add("active");
   // });
-  appendToMain(target);
-  console.log(target);
+  else if (target.classList.contains("toggle-btn")) {
+    menuToggler();
+  } else {
+    return;
+  }
   // observe.notify(target);
 });
 /*

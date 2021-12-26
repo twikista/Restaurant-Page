@@ -2,8 +2,9 @@ function createFooter() {
   const footer = document.createElement("footer");
   const fragment = new DocumentFragment();
   const copyrightInfo = document.createElement("p");
-  copyrightInfo.textContent = `crafted by viro &copy; 2021`;
+  copyrightInfo.innerHTML = "crafted by viro &copy; 2021";
   const social = document.createElement("div");
+  social.classList.add("social");
   //create github link
   const githubLink = document.createElement("a");
   githubLink.href = "https://github.com/twikista";
@@ -25,10 +26,16 @@ function createFooter() {
   //append links to social div
   social.append(copyrightInfo, githubLink, twitterLink, linkedinLink);
   //
+  const attribution = document.createElement("div");
+  attribution.classList.add("powered-by");
   const poweredByInfo = document.createElement("p");
   poweredByInfo.textContent = "Powered by: The Odin Project";
+  const odinLogo = document.createElement("img");
+  odinLogo.src = "../src/odin-logo.svg";
+  odinLogo.alt = "odin logo";
+  attribution.append(poweredByInfo, odinLogo);
   //append all footer elements to fragment
-  fragment.append(social, poweredByInfo);
+  fragment.append(social, attribution);
   footer.append(fragment);
   return footer;
 }
