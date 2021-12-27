@@ -158,6 +158,8 @@ nav {
 @media (max-width:720px) {
     .toggle-btn {
         display: block;
+        position: fixed;
+        right: 1.2rem;
 
     }
 }
@@ -278,3 +280,59 @@ footer img{
     font-size: 0.8rem;
     /* border: solid 2px red; */
 }
+/* menu section styles */
+/* contact section styles */
+.contact-section{
+    width: 80%;
+    max-width: 800px;
+    display: flex;
+    margin: 0 auto;
+    padding: 2rem;
+    background-color: rgba(2, 1, 1, 0.507);
+    border-radius: 8px;
+    
+}
+
+.contact-wrap{
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    place-items: center;
+    margin: 0 auto;
+    gap: 2rem;
+    /* border: solid red 1px; */
+    width: inherit;   
+}
+
+#message, input{
+    width: 100%;
+}
+
+.get-intouch{
+    /* border: solid red 1px; */
+}
+
+.contact-details{
+    /* width: 80%; */
+    /* border: solid red 1px; */
+    align-self: flex-start;
+}
+
+@media (max-width:720px) {
+    .contact-section{
+        padding: 1rem;
+    }
+    .contact-wrap{
+        grid-template-columns: 1fr;
+    }
+    
+    .get-intouch{}
+}
+
+
+
+
+.contact-form > *{
+    display: block;
+
+}
+

@@ -1,7 +1,10 @@
 function createContactSection() {
   const contactSection = document.createElement("section");
   contactSection.classList.add("contact-section");
-  contactSection.append(contactDetails(), getInTouch());
+  const contactWrapper = document.createElement("div");
+  contactWrapper.classList.add("contact-wrap");
+  contactWrapper.append(contactDetails(), getInTouch());
+  contactSection.append(contactWrapper);
   return contactSection;
 }
 
@@ -21,7 +24,7 @@ function contactDetails() {
     ),
     addressDetails("Phone Number", "+2349036610000", "fa-phone-square-alt"),
     addressDetails("Email", "info@havilah.ng", "fa-envelope"),
-    addressDetails("Website", "www.havilah.ng", "fa-tv")
+    addressDetails("Website", "www.havilah.ng", "fa-globe")
   );
   contactDiv.append(fragment);
   return contactDiv;
@@ -48,15 +51,16 @@ function getInTouch() {
   form.classList.add("contact-form");
   form.append(
     labelElement("Full Name"),
-    inputElement("text", "name"),
+    inputElement("text", "name", "Enter name"),
     labelElement("email"),
-    inputElement("email", "email"),
+    inputElement("email", "email", "Enter name"),
     labelElement("message")
   );
   const textArea = document.createElement("textarea");
   textArea.id = "message";
+  textArea.placeholder = "Enter your message";
   textArea.maxLength = 200;
-  textArea.cols = 40;
+  textArea.cols = 25;
   textArea.rows = 10;
   form.append(textArea);
   fragment.append(form);
@@ -71,11 +75,12 @@ function labelElement(name) {
   return nameLabel;
 }
 
-function inputElement(inputType, name) {
+function inputElement(inputType, name, placeHolder) {
   const nameInput = document.createElement("input");
   nameInput.type = `${inputType}`;
   nameInput.id = `${name}`;
   nameInput.classList.add(`${name}`);
+  nameInput.placeholder = placeHolder;
   return nameInput;
 }
 
