@@ -453,6 +453,10 @@ form input, textarea{
     font-size: 1rem;
 }
 
+label:not(:first-child){
+    margin-top: 0.3rem;
+}
+
 input[type ='submit']{
     background-color: tomato;
     margin-top: 0.4rem;
