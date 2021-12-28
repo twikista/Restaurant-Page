@@ -421,7 +421,6 @@ footer img{
 @media (max-width:720px) {
     .contact-wrap{
         width: 100%;
-        border: solid yellow 1px;
     }
     
 }

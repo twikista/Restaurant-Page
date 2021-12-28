@@ -1,3 +1,4 @@
+import odin from "/src/odin-logo.svg";
 function createFooter() {
   const footer = document.createElement("footer");
   const fragment = new DocumentFragment();
@@ -31,7 +32,7 @@ function createFooter() {
   const poweredByInfo = document.createElement("p");
   poweredByInfo.textContent = "Powered by: The Odin Project";
   const odinLogo = document.createElement("img");
-  odinLogo.src = "../src/odin-logo.svg";
+  odinLogo.src = odin;
   odinLogo.alt = "odin logo";
   attribution.append(poweredByInfo, odinLogo);
   //append all footer elements to fragment
