@@ -1,47 +1,59 @@
 function createContactSection() {
   const contactSection = document.createElement("section");
   contactSection.classList.add("contact-section");
+  contactSection.style.display = "none";
+  // contactSection.setAttribute("data-section", "contact-section");
   const contactWrapper = document.createElement("div");
   contactWrapper.classList.add("contact-wrap");
-  contactWrapper.append(contactDetails(), getInTouch());
-  contactSection.append(contactWrapper);
+  contactWrapper.append(contactDiv, getInTouch());
+  const contactHeader = document.createElement("h2");
+  contactHeader.classList.add("contact-header");
+  contactHeader.textContent = "Contact Us";
+  contactSection.append(contactHeader, contactWrapper);
   return contactSection;
 }
 
-function contactDetails() {
-  const contactDiv = document.createElement("div");
-  const fragment = new DocumentFragment();
-  contactDiv.classList.add("contact-details");
-  const h3 = document.createElement("h3");
-  h3.textContent = "Contact Details";
-  fragment.append(
-    h3,
-    addressDetails(
-      "Office Address",
-      `suite 25, Green Estate,
-      Lagos, Nigeria `,
-      "fa-map-marker-alt"
-    ),
-    addressDetails("Phone Number", "+2349036610000", "fa-phone-square-alt"),
-    addressDetails("Email", "info@havilah.ng", "fa-envelope"),
-    addressDetails("Website", "www.havilah.ng", "fa-globe")
-  );
-  contactDiv.append(fragment);
-  return contactDiv;
-}
+const contactDiv = document.createElement("div");
+const fragment = new DocumentFragment();
+contactDiv.classList.add("contact-details");
 
-function addressDetails(headingText, details, iconClass) {
-  const address = document.createElement("div");
-  const i = document.createElement("i");
-  i.classList.add("fas", `${iconClass}`);
-  const heading = document.createElement("h4");
-  heading.textContent = headingText;
-  const pText = document.createElement("p");
-  pText.textContent = details;
-  heading.append(i);
-  address.append(heading, pText);
-  return address;
-}
+//office address details
+const addressDetails = document.createElement("div");
+const addressIcon = document.createElement("i");
+addressIcon.classList.add("fas", "fa-map-marker-alt");
+const addressHeading = document.createElement("h3");
+addressHeading.textContent = "Office Address";
+const streetDetails = document.createElement("p");
+streetDetails.textContent = "suite 25, Green Estate, Lagos, Nigeria";
+addressHeading.prepend(addressIcon);
+//phone details
+const phoneNumber = document.createElement("p");
+phoneNumber.textContent = "+2349036610000";
+const phoneIcon = document.createElement("i");
+phoneIcon.classList.add("fas", "fa-phone-square-alt");
+phoneNumber.prepend(phoneIcon);
+//email details
+const email = document.createElement("p");
+email.textContent = "info@havilah.ng";
+const emailIcon = document.createElement("i");
+emailIcon.classList.add("fas", "fa-envelope");
+email.prepend(emailIcon);
+//website detials
+const website = document.createElement("p");
+website.textContent = "www.havilah.ng";
+const websiteIcon = document.createElement("i");
+websiteIcon.classList.add("fas", "fa-globe");
+website.prepend(websiteIcon);
+//
+addressDetails.append(
+  addressHeading,
+  streetDetails,
+  phoneNumber,
+  email,
+  website
+);
+fragment.append(addressDetails);
+contactDiv.append(fragment);
 
 function getInTouch() {
   const getInTouchDiv = document.createElement("div");
@@ -56,13 +68,16 @@ function getInTouch() {
     inputElement("email", "email", "Enter name"),
     labelElement("message")
   );
+  //create text area
   const textArea = document.createElement("textarea");
   textArea.id = "message";
   textArea.placeholder = "Enter your message";
   textArea.maxLength = 200;
   textArea.cols = 25;
-  textArea.rows = 10;
+  textArea.rows = 8;
   form.append(textArea);
+  //create submit button
+  form.append(inputElement("submit", "submit", ""));
   fragment.append(form);
   getInTouchDiv.append(fragment);
   return getInTouchDiv;

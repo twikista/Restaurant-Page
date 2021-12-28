@@ -2,6 +2,8 @@ function createHome() {
   //create element
   const homeSection = document.createElement("section");
   homeSection.classList.add("home-section");
+  homeSection.style.display = "flex";
+  // homeSection.setAttribute("data-section", "home-section");
   const sectionContent = document.createElement("div");
   sectionContent.classList.add("section-content");
   //create main section header
